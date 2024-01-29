@@ -268,7 +268,7 @@ export const weatherCodesAndIcons = [
     },
     night: {
       bgColor: 'bg-zinc-950',
-      textColor: 'text-black',
+      textColor: 'text-white',
       icon: '/weather/overcast-rain.svg',
     },
   },
