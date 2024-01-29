@@ -1,24 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Home } from './Home';
+import { Home } from './pages/Home.js';
 import Navbar from './components/Navbar.js';
-import { City } from './types/city.js';
-import { initialData, initialCity } from './data/initialData.js';
+import { initialData } from './data/initialData.js';
 
 export default function App() {
-  const [citiesData, setCitiesData] = useState<City[]>(initialCity);
   const [currentCity, setCurrentCity] = useState('London');
-  const [weather, setWeather] = useState(initialData);
+  const [weather, setWeather] = useState<typeof initialData>(initialData);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        'https://countriesnow.space/api/v0.1/countries/population/cities'
-      );
-      const data = await response.json();
-      setCitiesData(data.data);
-    };
-    fetchData();
+    if (localStorage.getItem('city') == null) {
+      localStorage.setItem('city', 'London');
+    } else {
+      const city = localStorage.getItem('city')!;
+      setCurrentCity(city);
+    }
   }, []);
 
   useEffect(() => {
@@ -34,11 +30,13 @@ export default function App() {
   }, [currentCity]);
 
   return (
-    <div className="min-h-screen font-poppins">
-      <Navbar citiesData={citiesData} setCurrentCity={setCurrentCity} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+    <div className="min-h-screen font-poppins flex flex-col bg-gray-50">
+      <Navbar setCurrentCity={setCurrentCity} />
+      <main className="grow flex flex-col">
+        <Routes>
+          <Route path="/" element={<Home weather={weather} />} />
+        </Routes>
+      </main>
     </div>
   );
 }
