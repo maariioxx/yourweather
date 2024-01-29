@@ -4,12 +4,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-sky-200',
       textColor: 'text-black',
-      icon: '/src/assets/weather/clear-day.svg',
+      icon: '/weather/clear-day.svg',
     },
     night: {
       bgColor: 'bg-zinc-900',
       textColor: 'text-white',
-      icon: '/src/assets/weather/clear-night.svg',
+      icon: '/weather/clear-night.svg',
     },
   },
   {
@@ -17,12 +17,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: '/src/assets/weather/partly-cloudy-day.svg',
+      icon: '/weather/partly-cloudy-day.svg',
     },
     night: {
       bgColor: 'bg-zinc-900',
       textColor: 'text-white',
-      icon: '/src/assets/weather/partly-cloudy-night.svg',
+      icon: '/weather/partly-cloudy-night.svg',
     },
   },
   {
@@ -30,12 +30,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/cloudy.svg',
+      icon: '/weather/cloudy.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/cloudy.svg',
+      icon: '/weather/cloudy.svg',
     },
   },
   {
@@ -43,12 +43,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/overcast.svg',
+      icon: '/weather/overcast.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/overcast.svg',
+      icon: '/weather/overcast.svg',
     },
   },
   {
@@ -56,12 +56,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/mist.svg',
+      icon: '/weather/mist.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/mist.svg',
+      icon: '/weather/mist.svg',
     },
   },
   {
@@ -69,12 +69,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/partly-cloudy-day-rain.svg',
+      icon: '/weather/partly-cloudy-day-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/partly-cloudy-night-rain.svg',
+      icon: '/weather/partly-cloudy-night-rain.svg',
     },
   },
   {
@@ -82,12 +82,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/partly-cloudy-day-snow.svg',
+      icon: '/weather/partly-cloudy-day-snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/partly-cloudy-night-snow.svg',
+      icon: '/weather/partly-cloudy-night-snow.svg',
     },
   },
   {
@@ -95,12 +95,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/partly-cloudy-day-sleet.svg',
+      icon: '/weather/partly-cloudy-day-sleet.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/partly-cloudy-night-sleet.svg',
+      icon: '/weather/partly-cloudy-night-sleet.svg',
     },
   },
   {
@@ -108,12 +108,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-300',
       textColor: 'text-black',
-      icon: 'src/assets/weather/partly-cloudy-day-drizzle.svg',
+      icon: '/weather/partly-cloudy-day-drizzle.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/partly-cloudy-night-drizzle.svg',
+      icon: '/weather/partly-cloudy-night-drizzle.svg',
     },
   },
   {
@@ -121,12 +121,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/thunderstorms-day.svg',
+      icon: '/weather/thunderstorms-day.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-night.svg',
+      icon: '/weather/thunderstorms-night.svg',
     },
   },
   {
@@ -134,12 +134,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/snow.svg',
+      icon: '/weather/snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/snow.svg',
+      icon: '/weather/snow.svg',
     },
   },
   {
@@ -147,12 +147,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/fog.svg',
+      icon: '/weather/fog.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/fog.svg',
+      icon: '/weather/fog.svg',
     },
   },
   {
@@ -160,12 +160,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/drizzle.svg',
+      icon: '/weather/drizzle.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/drizzle.svg',
+      icon: '/weather/drizzle.svg',
     },
   },
   {
@@ -173,12 +173,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/sleet.svg',
+      icon: '/weather/sleet.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/sleet.svg',
+      icon: '/weather/sleet.svg',
     },
   },
   {
@@ -186,12 +186,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/rain.svg',
+      icon: '/weather/rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/rain.svg',
+      icon: '/weather/rain.svg',
     },
   },
   {
@@ -199,12 +199,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/moderate-rain.svg',
+      icon: '/weather/moderate-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/moderate-rain.svg',
+      icon: '/weather/moderate-rain.svg',
     },
   },
   {
@@ -212,12 +212,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-rain.svg',
+      icon: '/weather/extreme-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-rain.svg',
+      icon: '/weather/extreme-rain.svg',
     },
   },
   {
@@ -225,12 +225,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/snow.svg',
+      icon: '/weather/snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/snow.svg',
+      icon: '/weather/snow.svg',
     },
   },
   {
@@ -238,12 +238,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-snow.svg',
+      icon: '/weather/extreme-snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-snow.svg',
+      icon: '/weather/extreme-snow.svg',
     },
   },
   {
@@ -251,12 +251,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/hail.svg',
+      icon: '/weather/hail.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/hail.svg',
+      icon: '/weather/hail.svg',
     },
   },
   {
@@ -264,12 +264,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/overcast-rain.svg',
+      icon: '/weather/overcast-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-black',
-      icon: 'src/assets/weather/overcast-rain.svg',
+      icon: '/weather/overcast-rain.svg',
     },
   },
   {
@@ -277,12 +277,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/overcast-sleet.svg',
+      icon: '/weather/overcast-sleet.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/overcast-sleet.svg',
+      icon: '/weather/overcast-sleet.svg',
     },
   },
   {
@@ -290,12 +290,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-sleet.svg',
+      icon: '/weather/extreme-sleet.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-sleet.svg',
+      icon: '/weather/extreme-sleet.svg',
     },
   },
   {
@@ -303,12 +303,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/overcast-snow.svg',
+      icon: '/weather/overcast-snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/overcast-snow.svg',
+      icon: '/weather/overcast-snow.svg',
     },
   },
   {
@@ -316,12 +316,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-hail.svg',
+      icon: '/weather/extreme-hail.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/extreme-hail.svg',
+      icon: '/weather/extreme-hail.svg',
     },
   },
   {
@@ -329,12 +329,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/thunderstorms-rain.svg',
+      icon: '/weather/thunderstorms-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-rain.svg',
+      icon: '/weather/thunderstorms-rain.svg',
     },
   },
   {
@@ -342,12 +342,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-extreme-rain.svg',
+      icon: '/weather/thunderstorms-extreme-rain.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-extreme-rain.svg',
+      icon: '/weather/thunderstorms-extreme-rain.svg',
     },
   },
   {
@@ -355,12 +355,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
-      icon: 'src/assets/weather/thunderstorms-snow.svg',
+      icon: '/weather/thunderstorms-snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-snow.svg',
+      icon: '/weather/thunderstorms-snow.svg',
     },
   },
   {
@@ -368,12 +368,12 @@ export const weatherCodesAndIcons = [
     day: {
       bgColor: 'bg-gray-600',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-extreme-snow.svg',
+      icon: '/weather/thunderstorms-extreme-snow.svg',
     },
     night: {
       bgColor: 'bg-zinc-950',
       textColor: 'text-white',
-      icon: 'src/assets/weather/thunderstorms-extreme-snow.svg',
+      icon: '/weather/thunderstorms-extreme-snow.svg',
     },
   },
 ];
