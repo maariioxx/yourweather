@@ -30,18 +30,18 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
       </h1>
       <div className="flex mr-5 gap-1 items-center">
         <div className="flex flex-col relative">
-          <label htmlFor="city-input">
-            <p className="hidden">City input</p>
-            <input
-              id="city-input"
-              type="text"
-              value={currentInput}
-              onChange={(e) => {
-                setCurrentInput(e.target.value);
-              }}
-              className="bg-gray-100 p-0.5 rounded border-2 outline-none hover:border-yellow-400 focus:border-yellow-400 transition-colors"
-            />
-          </label>
+          <div id="cityinput" className="hidden">
+            City input
+          </div>
+          <input
+            aria-labelledby="cityinput"
+            type="text"
+            value={currentInput}
+            onChange={(e) => {
+              setCurrentInput(e.target.value);
+            }}
+            className="bg-gray-100 p-0.5 rounded border-2 outline-none hover:border-yellow-400 focus:border-yellow-400 transition-colors"
+          />
         </div>
         <button
           onFocus={() => onSubmitClick()}
