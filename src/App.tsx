@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=f761d4a415a94079961121143231412&q=${currentCity}&days=6&aqi=yes&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=f761d4a415a94079961121143231412&q=${currentCity}&days=6&aqi=yes&alerts=no`
       );
       if (!response.ok) throw new Error('WeatherAPI request failed');
       const data = await response.json();
