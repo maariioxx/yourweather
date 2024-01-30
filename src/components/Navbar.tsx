@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { fromLatLng, setKey } from 'react-geocode';
+import { GeocodingAPI } from '../types/GeocodingAPI';
 
+setKey('AIzaSyCHlkfbLgqMqjEVO9VGtZhMdrxnPfFleZ8');
 type NavbarProps = {
   setCurrentCity: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -9,6 +12,19 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
     localStorage.getItem('city') || ''
   );
   const [titleHovered, setTitleHovered] = useState(false);
+
+  function getActualLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      fromLatLng(position.coords.latitude, position.coords.longitude).then(
+        ({ results }: { results: GeocodingAPI[] }) => {
+          const res = results.filter((result) => {
+            if (result.types.includes('locality')) return result;
+          });
+          setCurrentCity(res[0].formatted_address);
+        }
+      );
+    });
+  }
 
   function onSubmitClick() {
     setCurrentCity(currentInput);
@@ -29,6 +45,7 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
         Weather
       </h1>
       <div className="flex mr-5 gap-1 items-center">
+        <button onClick={() => getActualLocation()}>UBICACION ACTUAL</button>
         <div className="flex flex-col relative">
           <div id="cityinput" className="hidden">
             City input
