@@ -1,16 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home.js';
 import Navbar from './components/Navbar.js';
 import { initialData } from './data/initialData.js';
+import { ThemesContext } from './context/Themes.js';
+import { ThemesContextType } from './types/ThemesContextType.js';
 
 export default function App() {
   const [currentCity, setCurrentCity] = useState('London');
-  const [weather, setWeather] = useState<typeof initialData>(initialData);
-
+  const [weather, setWeather] = useState<typeof initialData | null>(
+    initialData
+  );
+  const { darkMode } = useContext(ThemesContext) as ThemesContextType;
   useEffect(() => {
     if (localStorage.getItem('city') == null) {
       localStorage.setItem('city', 'London');
+      setCurrentCity('London');
     } else {
       const city = localStorage.getItem('city')!;
       setCurrentCity(city);
@@ -30,11 +35,15 @@ export default function App() {
   }, [currentCity]);
 
   return (
-    <div className="min-h-screen font-poppins flex flex-col bg-gray-50">
+    <div
+      className={`${
+        darkMode ? 'dark' : ''
+      } min-h-screen font-poppins flex flex-col bg-gray-50 dark:bg-black`}
+    >
       <Navbar setCurrentCity={setCurrentCity} />
-      <main className="grow flex flex-col">
+      <main className="grow flex flex-col dark:bg-neutral-900">
         <Routes>
-          <Route path="/" element={<Home weather={weather} />} />
+          <Route path="/" element={<Home weather={weather!} />} />
         </Routes>
       </main>
     </div>
