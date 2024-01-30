@@ -1,3 +1,5 @@
+// @ts-ignore
+
 // To parse this data:
 //
 //   import { Convert } from "./file";
@@ -228,10 +230,6 @@ function u(...typs: any[]) {
 
 function o(props: any[], additional: any) {
   return { props, additional };
-}
-
-function m(additional: any) {
-  return { props: [], additional };
 }
 
 function r(name: string) {
