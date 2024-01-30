@@ -1,2 +1,2 @@
 /postcss.config.cjs
-/src/types/city.ts
+/src/types/GeocodingAPI.ts
