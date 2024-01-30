@@ -1,4 +1,4 @@
-import { Weather } from '../types/weather';
+import { Weather } from '../types/Weather';
 import { weatherCodesAndIcons } from '../data/weatherCodesAndIcons';
 
 export function Home({ weather }: { weather: Weather }) {
@@ -23,7 +23,11 @@ export function Home({ weather }: { weather: Weather }) {
               {weather.current.feelslike_c.toFixed(0)}ºC
             </p>
           </div>
-          <hr className="border-black" />
+          <hr
+            className={
+              weather.current.is_day === 1 ? 'border-black' : 'border-white'
+            }
+          />
           <div>
             <p className="text-4xl">
               {weather.current.wind_kph.toFixed(0)}
