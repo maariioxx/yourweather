@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { fromLatLng, setKey } from 'react-geocode';
-import { GeocodingAPI } from '../types/GeocodingAPI';
+import { GeocodingAPIType } from '../types/GeocodingAPIType';
+import { MdLocationOn } from 'react-icons/md';
+import DropdownMenu from './DropdownMenu';
 
 setKey('AIzaSyCHlkfbLgqMqjEVO9VGtZhMdrxnPfFleZ8');
 type NavbarProps = {
@@ -13,25 +15,25 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
   );
   const [titleHovered, setTitleHovered] = useState(false);
 
+  function onSettingCurrentCity(input: string) {
+    setCurrentCity(input);
+    localStorage.setItem('city', input);
+  }
+
   function getActualLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       fromLatLng(position.coords.latitude, position.coords.longitude).then(
-        ({ results }: { results: GeocodingAPI[] }) => {
+        ({ results }: { results: GeocodingAPIType[] }) => {
           const res = results.filter((result) => {
             if (result.types.includes('locality')) return result;
           });
-          setCurrentCity(res[0].formatted_address);
+          onSettingCurrentCity(res[0].formatted_address);
         }
       );
     });
   }
-
-  function onSubmitClick() {
-    setCurrentCity(currentInput);
-    localStorage.setItem('city', currentInput);
-  }
   return (
-    <header className="flex justify-between p-8 bg-gray-50">
+    <header className="flex mx-0 flex-col md:flex-row items-center gap-6 justify-center sm:justify-evenly md:pr-6 lg:pr-12 xl:pr-24 py-8 bg-gray-100 dark:bg-neutral-900 dark:text-white">
       <h1
         className="text-3xl"
         onMouseOver={() => setTitleHovered(true)}
@@ -44,29 +46,38 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
         </span>
         Weather
       </h1>
-      <div className="flex mr-5 gap-1 items-center">
-        <button onClick={() => getActualLocation()}>UBICACION ACTUAL</button>
-        <div className="flex flex-col relative">
-          <div id="cityinput" className="hidden">
-            City input
+      <div className="flex mr-0  gap-3 items-center">
+        <div className="flex gap-1">
+          <button
+            onClick={() => getActualLocation()}
+            className="relative bg-gray-100 dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black text-xl w-8 h-8 border-2 dark:border-neutral-700 rounded transition-colors"
+          >
+            <MdLocationOn className="absolute top-1 left-1" />
+          </button>
+          <div className="flex flex-col relative">
+            <div id="cityinput" className="hidden">
+              City input
+            </div>
+            <input
+              aria-labelledby="cityinput"
+              placeholder="Insert your desired city!"
+              type="text"
+              value={currentInput}
+              onChange={(e) => {
+                setCurrentInput(e.target.value);
+              }}
+              className="bg-gray-100 dark:bg-neutral-800 pl-1 p-0.5 rounded border-2 dark:border-neutral-700 outline-none hover:border-yellow-400 focus:border-yellow-400 dark:hover:border-yellow-400 dark:focus:border-yellow-400 transition-colors"
+            />
           </div>
-          <input
-            aria-labelledby="cityinput"
-            type="text"
-            value={currentInput}
-            onChange={(e) => {
-              setCurrentInput(e.target.value);
-            }}
-            className="bg-gray-100 p-0.5 rounded border-2 outline-none hover:border-yellow-400 focus:border-yellow-400 transition-colors"
-          />
+          <button
+            onFocus={() => onSettingCurrentCity(currentInput)}
+            className="bg-gray-200 dark:bg-neutral-800 px-3 py-1 rounded hover:bg-yellow-400 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black transition-colors"
+          >
+            Search
+          </button>
         </div>
-        <button
-          onFocus={() => onSubmitClick()}
-          className="bg-gray-200 px-3 py-1 rounded hover:bg-yellow-400 transition-colors"
-        >
-          Search
-        </button>
       </div>
+      <DropdownMenu />
     </header>
   );
 }
