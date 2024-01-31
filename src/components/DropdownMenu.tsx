@@ -1,13 +1,19 @@
 import { Menu, Transition } from '@headlessui/react';
 import { MdOutlineSettings } from 'react-icons/md';
 import { useContext, Fragment } from 'react';
-import { ThemesContext } from '../context/Themes';
-import { ThemesContextType } from '../types/ThemesContextType';
+import { SettingsContext } from '../context/Settings';
+import { SettingsContextType } from '../types/SettingsContextType';
 import MenuRow from './MenuRow';
 
 export default function DropdownMenu() {
-  const { darkMode, setDarkMode, themeBackground, setThemeBackground } =
-    useContext(ThemesContext) as ThemesContextType;
+  const {
+    darkMode,
+    setDarkMode,
+    themeBackground,
+    setThemeBackground,
+    imperialUnits,
+    setImperialUnits,
+  } = useContext(SettingsContext) as SettingsContextType;
   return (
     <Menu as="div" className="relative">
       <Menu.Button className="relative bg-gray-100 dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 text-xl w-8 h-8 border-2 rounded dark:border-neutral-700 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black transition-colors">
@@ -38,6 +44,14 @@ export default function DropdownMenu() {
             title="Background"
             leftinfo="Weather"
             rightinfo="Theme"
+          />
+          <MenuRow
+            state={imperialUnits}
+            setState={setImperialUnits}
+            localStorageName="imperial-units"
+            title="Units"
+            leftinfo="Metric"
+            rightinfo="Imperial"
           />
         </Menu.Items>
       </Transition>
