@@ -42,7 +42,7 @@ export default function App() {
     <div
       className={`${
         darkMode ? 'dark' : ''
-      } min-h-screen font-poppins flex flex-col bg-gray-50 dark:bg-black`}
+      } h-full -mb-52 font-poppins flex flex-col bg-gray-50 dark:bg-black`}
     >
       <Navbar setCurrentCity={setCurrentCity} />
       <main className="grow flex flex-col dark:bg-neutral-900">
