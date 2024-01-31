@@ -1,4 +1,4 @@
-import { MenuRowType } from '../types/MenuRowType';
+import { MenuRowPropsType } from '../types/MenuRowPropsType';
 import { Menu, Switch } from '@headlessui/react';
 import { useEffect } from 'react';
 
@@ -9,7 +9,7 @@ export default function MenuRow({
   title,
   leftinfo,
   rightinfo,
-}: MenuRowType) {
+}: MenuRowPropsType) {
   useEffect(() => {
     localStorage.setItem(localStorageName, state.toString());
   }, [state, localStorageName]);
