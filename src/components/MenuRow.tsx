@@ -14,7 +14,7 @@ export default function MenuRow({
     localStorage.setItem(localStorageName, state.toString());
   }, [state, localStorageName]);
   return (
-    <div className="flex flex-col gap-4 text-center items-center">
+    <div className="flex flex-col gap-4 text-center justify-center p-4 items-center">
       <p>{title}</p>
       <Menu.Item key={crypto.randomUUID()} as={'div'} className="flex gap-2">
         {leftinfo}
