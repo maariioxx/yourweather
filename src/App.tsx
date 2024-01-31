@@ -3,15 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home.js';
 import Navbar from './components/Navbar.js';
 import { initialData } from './data/initialData.js';
-import { ThemesContext } from './context/Themes.js';
-import { ThemesContextType } from './types/ThemesContextType.js';
+import { SettingsContext } from './context/Settings.js';
+import { SettingsContextType } from './types/SettingsContextType.js';
 
 export default function App() {
   const [currentCity, setCurrentCity] = useState('London');
   const [weather, setWeather] = useState<typeof initialData | null>(
     initialData
   );
-  const { darkMode } = useContext(ThemesContext) as ThemesContextType;
+  const { darkMode } = useContext(SettingsContext) as SettingsContextType;
   useEffect(() => {
     if (localStorage.getItem('city') == null) {
       localStorage.setItem('city', 'London');
