@@ -4,7 +4,7 @@ import { GeocodingAPIType } from '../types/GeocodingAPIType';
 import { MdLocationOn } from 'react-icons/md';
 import DropdownMenu from './DropdownMenu';
 
-setKey('AIzaSyCHlkfbLgqMqjEVO9VGtZhMdrxnPfFleZ8');
+setKey(import.meta.env.VITE_GEOCODING_API_KEY);
 type NavbarProps = {
   setCurrentCity: React.Dispatch<React.SetStateAction<string>>;
 };

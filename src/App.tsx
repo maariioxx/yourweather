@@ -22,10 +22,14 @@ export default function App() {
     }
   }, []);
 
+  console.log(weather);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=f761d4a415a94079961121143231412&q=${currentCity}&days=6&aqi=yes&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=${
+          import.meta.env.VITE_WEATHER_API_KEY
+        }&q=${currentCity}&days=6&aqi=yes&alerts=no`
       );
       if (!response.ok) throw new Error('WeatherAPI request failed');
       const data = await response.json();
