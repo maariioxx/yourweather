@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type MenuRowType = {
+export type MenuRowPropsType = {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
   localStorageName: string;
