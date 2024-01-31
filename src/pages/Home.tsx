@@ -3,6 +3,7 @@ import { weatherCodesAndIcons } from '../data/weatherCodesAndIcons';
 import { useContext } from 'react';
 import { SettingsContext } from '../context/Settings';
 import { SettingsContextType } from '../types/SettingsContextType';
+import HomeInfo from '../components/HomeInfo';
 
 export function Home({ weather }: { weather: WeatherType }) {
   const { darkMode, themeBackground, imperialUnits } = useContext(
@@ -41,13 +42,13 @@ export function Home({ weather }: { weather: WeatherType }) {
               <div className="flex gap-2">
                 <p className="text-4xl">
                   {imperialUnits
-                    ? `${weather.current.temp_f}ºF`
-                    : `${weather.current.temp_c}ºC`}{' '}
+                    ? `${weather.current.temp_f.toFixed(0)}ºF`
+                    : `${weather.current.temp_c.toFixed(0)}ºC`}{' '}
                 </p>
                 <p className="text-xl">
                   {imperialUnits
-                    ? `${weather.current.feelslike_f}ºF`
-                    : `${weather.current.feelslike_c}ºC`}
+                    ? `${weather.current.feelslike_f.toFixed(0)}ºF`
+                    : `${weather.current.feelslike_c.toFixed(0)}ºC`}
                 </p>
               </div>
             </div>
@@ -63,7 +64,15 @@ export function Home({ weather }: { weather: WeatherType }) {
               }
             />
             <div className="flex items-center">
-              <img src="/weather/raindrops.svg" alt="" className="w-12 h-14" />
+              <img
+                src={`/weather/${
+                  weather.current.precip_mm > 0
+                    ? 'raindrop-measure'
+                    : 'raindrops'
+                }.svg`}
+                alt=""
+                className="w-12 h-14"
+              />
               <p className="text-4xl">
                 {weather.current.precip_mm > 0
                   ? imperialUnits
@@ -87,23 +96,7 @@ export function Home({ weather }: { weather: WeatherType }) {
           <p>{weather.location.localtime.split(' ')[1]}</p>
         </div>
       </div>
-      <div className="flex">
-        <div className="flex items-center justify-between">
-          <h2>Wind Gusts</h2>
-          <img
-            src="/weather/windsock.svg"
-            alt=""
-            className=" w-16 rounded-sm"
-          />
-
-          <p className="text-4xl">
-            {imperialUnits
-              ? `${weather.current.wind_mph}`
-              : `${weather.current.wind_kph}`}
-            <span className="text-xl">{imperialUnits ? 'mph' : 'km/h'}</span>
-          </p>
-        </div>
-      </div>
+      <HomeInfo weather={weather} />
     </div>
   );
 }
