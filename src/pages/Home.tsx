@@ -43,7 +43,13 @@ export function Home({ weather }: { weather: WeatherType }) {
           </div>
           <hr
             className={
-              weather.current.is_day === 1 ? 'border-black' : 'border-white'
+              themeBackground
+                ? darkMode
+                  ? 'border-white'
+                  : 'border-black'
+                : weather.current.is_day === 1
+                ? 'border-black'
+                : 'border-white'
             }
           />
           <div>
