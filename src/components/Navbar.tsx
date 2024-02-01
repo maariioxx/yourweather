@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { fromLatLng, setKey } from 'react-geocode';
-import { GeocodingAPIType } from '../types/GeocodingAPIType';
 import { MdLocationOn } from 'react-icons/md';
 import DropdownMenu from './DropdownMenu';
 
@@ -20,19 +18,22 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
   }
 
   async function getActualLocation() {
-    const response = await fetch('http://localhost:3000/geocoding-api');
-    const data = await response.json();
-    setKey(data.key);
-    navigator.geolocation.getCurrentPosition((position) => {
-      fromLatLng(position.coords.latitude, position.coords.longitude).then(
-        ({ results }: { results: GeocodingAPIType[] }) => {
-          const res = results.filter((result) => {
-            if (result.types.includes('locality')) return result;
-          });
-          onSettingCurrentCity(res[0].formatted_address);
-        }
-      );
-    });
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const response = await fetch('http://localhost:3000/geocoding-api', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }),
+        });
+        if (!response.ok) throw new Error('Geocoding API fetch failed');
+        const data = await response.json();
+        onSettingCurrentCity(data);
+      });
+    };
+    fetchData();
   }
   return (
     <header className="flex mx-0 flex-col md:flex-row items-center gap-6 justify-center sm:justify-evenly md:pr-6 lg:pr-12 xl:pr-24 py-8 bg-gray-100 dark:bg-neutral-900 dark:text-white">
