@@ -1,5 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import { fromLatLng, setKey } from 'react-geocode';
+import { GeocodingAPIType } from '../src/types/GeocodingAPIType';
 
 const app = express();
 dotenv.config();
@@ -14,16 +17,34 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('EEEEE');
+app.use(bodyParser.json());
+
+app.post('/weather-api', (req, res) => {
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.body.city}&days=6&aqi=yes&alerts=no`
+    );
+    const data = await response.json();
+    res.json(data);
+  };
+  fetchData();
 });
-app.get('/weather-api', (req, res) => {
-  console.log(typeof process.env.WEATHER_API_KEY);
-  return res.json({ key: process.env.WEATHER_API_KEY });
-});
-app.get('/geocoding-api', (req, res) => {
-  console.log(process.env.GEOCODING_API_KEY);
-  return res.json({ key: process.env.GEOCODING_API_KEY });
+
+app.post('/geocoding-api', (req, res) => {
+  const fetchData = async () => {
+    setKey(process.env.GEOCODING_API_KEY as string);
+    const data: string = await fromLatLng(
+      req.body.latitude,
+      req.body.longitude
+    ).then(({ results }: { results: GeocodingAPIType[] }) => {
+      const data = results.filter((result) => {
+        if (result.types.includes('locality')) return result;
+      });
+      return data[0].formatted_address;
+    });
+    res.json(data);
+  };
+  fetchData();
 });
 
 app.listen(3000, () => {
