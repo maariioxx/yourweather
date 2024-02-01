@@ -12,7 +12,6 @@ export default function HomeInfoRow({
   text,
   optionalText,
 }: HomeInfoRowPropsType) {
-  console.log(iconName);
   const { imperialUnits } = useContext(SettingsContext) as SettingsContextType;
   return (
     <div className="flex items-center gap-64 justify-between">
