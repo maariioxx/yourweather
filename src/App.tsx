@@ -12,6 +12,22 @@ export default function App() {
     initialData
   );
   const { darkMode } = useContext(SettingsContext) as SettingsContextType;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:3000/weather-api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ city: currentCity }),
+      });
+      if (!response.ok) throw new Error('Weather API fetch failed');
+      const data = await response.json();
+      setWeather(data);
+      localStorage.setItem('city', currentCity);
+    };
+    fetchData();
+  }, [currentCity]);
+
   useEffect(() => {
     if (localStorage.getItem('city') == null) {
       localStorage.setItem('city', 'London');
@@ -21,25 +37,6 @@ export default function App() {
       setCurrentCity(city);
     }
   }, []);
-
-  useEffect(() => {
-    const fetchKey = async () => {
-      const response = await fetch('http://localhost:3000/weather-api');
-      const data = await response.json();
-      console.log(data.key);
-      async function fetchData(datakey: string) {
-        const response = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=${datakey}&q=${currentCity}&days=6&aqi=yes&alerts=no`
-        );
-        if (!response.ok) throw new Error('WeatherAPI request failed');
-        const data = await response.json();
-        setWeather(data);
-        localStorage.setItem('city', currentCity);
-      }
-      fetchData(data.key);
-    };
-    fetchKey();
-  }, [currentCity]);
 
   return (
     <div
