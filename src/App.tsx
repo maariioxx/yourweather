@@ -22,20 +22,23 @@ export default function App() {
     }
   }, []);
 
-  console.log(weather);
-
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${
-          import.meta.env.VITE_WEATHER_API_KEY
-        }&q=${currentCity}&days=6&aqi=yes&alerts=no`
-      );
-      if (!response.ok) throw new Error('WeatherAPI request failed');
+    const fetchKey = async () => {
+      const response = await fetch('http://localhost:3000/weather-api');
       const data = await response.json();
-      setWeather(data);
+      console.log(data.key);
+      async function fetchData(datakey: string) {
+        const response = await fetch(
+          `https://api.weatherapi.com/v1/forecast.json?key=${datakey}&q=${currentCity}&days=6&aqi=yes&alerts=no`
+        );
+        if (!response.ok) throw new Error('WeatherAPI request failed');
+        const data = await response.json();
+        setWeather(data);
+        localStorage.setItem('city', currentCity);
+      }
+      fetchData(data.key);
     };
-    fetchData();
+    fetchKey();
   }, [currentCity]);
 
   return (
