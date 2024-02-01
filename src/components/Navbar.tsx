@@ -4,7 +4,6 @@ import { GeocodingAPIType } from '../types/GeocodingAPIType';
 import { MdLocationOn } from 'react-icons/md';
 import DropdownMenu from './DropdownMenu';
 
-setKey(import.meta.env.VITE_GEOCODING_API_KEY);
 type NavbarProps = {
   setCurrentCity: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -20,7 +19,10 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
     localStorage.setItem('city', input);
   }
 
-  function getActualLocation() {
+  async function getActualLocation() {
+    const response = await fetch('http://localhost:3000/geocoding-api');
+    const data = await response.json();
+    setKey(data.key);
     navigator.geolocation.getCurrentPosition((position) => {
       fromLatLng(position.coords.latitude, position.coords.longitude).then(
         ({ results }: { results: GeocodingAPIType[] }) => {
