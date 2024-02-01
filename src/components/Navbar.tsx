@@ -20,7 +20,7 @@ export default function Navbar({ setCurrentCity }: NavbarProps) {
   async function getActualLocation() {
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(async (position) => {
-        const response = await fetch('http://localhost:3000/geocoding-api', {
+        const response = await fetch('/.netlify/api/weather', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
