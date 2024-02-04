@@ -1,21 +1,27 @@
 import { Menu, Transition } from '@headlessui/react';
 import { MdOutlineSettings } from 'react-icons/md';
-import { useContext, Fragment } from 'react';
-import { SettingsContext } from '../context/Settings';
-import { SettingsContextType } from '../types/SettingsContextType';
+import { Fragment } from 'react';
 import MenuRow from './MenuRow';
+import { useSettingsStore } from '../store/settings';
 
 export default function DropdownMenu() {
-  const {
+  const [
     darkMode,
     setDarkMode,
     themeBackground,
     setThemeBackground,
     imperialUnits,
     setImperialUnits,
-  } = useContext(SettingsContext) as SettingsContextType;
+  ] = useSettingsStore((state) => [
+    state.darkMode,
+    state.setDarkMode,
+    state.themeBackground,
+    state.setThemeBackground,
+    state.imperialUnits,
+    state.setImperialUnits,
+  ]);
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className="relative z-10">
       <Menu.Button className="relative bg-gray-100 dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 text-xl w-8 h-8 border-2 rounded dark:border-neutral-700 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black transition-colors">
         <MdOutlineSettings className="absolute top-1 left-1" />
       </Menu.Button>
