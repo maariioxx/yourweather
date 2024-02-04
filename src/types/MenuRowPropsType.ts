@@ -1,8 +1,6 @@
-import React from 'react';
-
 export type MenuRowPropsType = {
   state: boolean;
-  setState: React.Dispatch<React.SetStateAction<boolean>>;
+  setState: (data: boolean) => void;
   localStorageName: string;
   title: string;
   leftinfo: string;
