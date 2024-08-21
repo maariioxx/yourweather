@@ -9,6 +9,7 @@ const app = express()
 const router = Router()
 dotenv.config()
 
+app.use('/', express.static('dist'))
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST')
@@ -22,6 +23,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json())
 
 app.post('/weather-api', (req, res) => {
+  console.log('e')
   const fetchData = async () => {
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.body.city}&days=3&aqi=yes&alerts=no`
@@ -49,6 +51,6 @@ router.post('/geocoding', (req, res) => {
   fetchData()
 })
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Server started on port 3000')
 })

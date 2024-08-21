@@ -38,8 +38,8 @@ export default function App() {
   async function fetchWeather() {
     const { data } = await axios.post(
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/weather-api'
-        : 'https://yourweather-mu.vercel.app/weather-api',
+        ? 'http://localhost:3001/weather-api'
+        : 'https://yourweather.onrender.com/weather-api',
       {
         city: currentCity,
       }
