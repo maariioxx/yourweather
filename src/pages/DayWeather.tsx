@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useWeatherStore } from '../store/weather'
 import { getWeatherStyle } from '../utils/getWeatherStyle'
@@ -13,9 +12,6 @@ export default function DayWeather() {
 
   const weatherStyle = getWeatherStyle({ weather: day.day })
 
-  useEffect(() => {
-    console.log(day)
-  }, [day])
   return (
     <div className={`${weatherStyle.bgColor} w-full h-full`}>
       <h1>{date_epoch}</h1>
