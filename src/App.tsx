@@ -39,7 +39,7 @@ export default function App() {
     const { data } = await axios.post(
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/weather-api'
-        : 'https://yourweather1.netlify.app/weather-api',
+        : 'https://yourweather-mu.vercel.app/weather-api',
       {
         city: currentCity,
       }
