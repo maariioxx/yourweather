@@ -33,12 +33,19 @@ export default function App() {
     }
   }, [])
 
+  console.log(process.env.NODE_ENV)
+
   /*eslint-disable react-hooks/exhaustive-deps */
 
   async function fetchWeather() {
-    const { data } = await axios.post('http://localhost:3000/weather-api', {
-      city: currentCity,
-    })
+    const { data } = await axios.post(
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/weather-api'
+        : 'https://yourweather1.netlify.app/',
+      {
+        city: currentCity,
+      }
+    )
     return data
   }
 
@@ -48,7 +55,7 @@ export default function App() {
   })
 
   useEffect(() => {
-    if (weather.isSuccess) setWeather(weather.data)
+    if (weather.isSuccess && weather.data.location) setWeather(weather.data)
   }, [weather])
 
   useEffect(() => {

@@ -25,7 +25,7 @@ app.post('/weather-api', (req, res) => {
   console.log('e')
   const fetchData = async () => {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.body.city}&days=6&aqi=yes&alerts=no`
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.body.city}&days=3&aqi=yes&alerts=no`
     )
     const data = await response.json()
     res.json(data)
