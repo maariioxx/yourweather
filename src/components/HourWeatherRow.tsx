@@ -1,16 +1,11 @@
-import dayjs from 'dayjs';
-import { HourWeatherRowType } from '../types/HourWeatherRowType';
-import { weatherCodesAndIcons } from '../data/weatherCodesAndIcons';
+import dayjs from 'dayjs'
+import { useSettingsStore } from '../store/settings'
+import { HourWeatherRowType } from '../types/HourWeatherRowType'
+import { getWeatherStyle } from '../utils/getWeatherStyle'
 
 export default function HourWeatherRow({ hour }: { hour: HourWeatherRowType }) {
-  const weatherCode = weatherCodesAndIcons.filter((code) => {
-    if (code.codes.includes(hour.condition.code)) return code;
-    return;
-  });
-  let weatherStyle: { bgColor: string; textColor: string; icon: string };
-  hour.is_day === 1
-    ? (weatherStyle = weatherCode[0].day)
-    : (weatherStyle = weatherCode[0].night);
+  const imperialUnits = useSettingsStore((state) => state.imperialUnits)
+  const weatherStyle = getWeatherStyle({ weather: hour })
   return (
     <div className="grid grid-cols-4 items-center gap-6 w-64">
       <div className="flex flex-col">
@@ -20,7 +15,9 @@ export default function HourWeatherRow({ hour }: { hour: HourWeatherRowType }) {
       <img src={weatherStyle.icon} alt="" className="w-20 h-20" />
       <div className="flex items-center">
         <img src="/weather/thermometer.svg" alt="" className="w-8 h-8 -mx-2" />
-        <p>{hour.temp_c.toFixed(0)}º</p>
+        <p>
+          {imperialUnits ? hour.temp_f.toFixed(0) : hour.temp_c.toFixed(0)}º
+        </p>
       </div>
       <div className="flex items-center col-start-4 col-end-5 row-start-1 row-end-2">
         {hour.chance_of_snow > 0 ? (
@@ -44,5 +41,5 @@ export default function HourWeatherRow({ hour }: { hour: HourWeatherRowType }) {
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -2,6 +2,8 @@ import HomeInfoRow from './HomeInfoRow';
 import Line from './Line';
 import { WeatherInfoType } from '../types/WeatherInfoPropsType';
 import { useSettingsStore } from '../store/settings';
+import { useTranslation } from 'react-i18next';
+import DayTimeBar from './DayTimeBar';
 
 export default function WeatherInfo({
   currentWeather,
@@ -14,6 +16,7 @@ export default function WeatherInfo({
     state.darkMode,
     state.themeBackground,
   ]);
+  const [t, i18n] = useTranslation('global');
 
   function AirQualityData() {
     switch (airQualityInfo?.['us-epa-index']) {
@@ -35,9 +38,9 @@ export default function WeatherInfo({
     }
   }
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 bg-black bg-opacity-10 rounded-3xl px-10 py-6">
       <HomeInfoRow
-        title="Wind"
+        title={t('home.wind')}
         iconName="wind"
         isInfoAUnit={true}
         info={currentWeather.wind_kph.toFixed(0)}
@@ -47,7 +50,7 @@ export default function WeatherInfo({
       />
       <Line isDay={currentWeather.is_day} width={128} />
       <HomeInfoRow
-        title="Wind Gusts"
+        title={t('home.windgusts')}
         iconName="windsock"
         isInfoAUnit={true}
         info={currentWeather.gust_kph.toFixed(0)}
@@ -60,7 +63,7 @@ export default function WeatherInfo({
         <>
           <div className="flex items-center gap-2 justify-around">
             <div className="flex gap-8 items-center justify-between">
-              <h2>Sunrise</h2>
+              <h2>{t('home.sunrise')}</h2>
               <div className="flex items-center">
                 <img
                   src="/weather/sunrise.svg"
@@ -82,7 +85,7 @@ export default function WeatherInfo({
               } w-10 rotate-90`}
             />
             <div className="flex gap-8 justify-between items-center">
-              <h2>Sunset</h2>
+              <h2>{t('home.sunset')}</h2>
               <div className="flex items-center">
                 <img
                   src="/weather/sunset.svg"
@@ -93,12 +96,13 @@ export default function WeatherInfo({
               </div>
             </div>
           </div>
+          <DayTimeBar />
           <Line isDay={currentWeather.is_day} width={128} />
         </>
       )}
 
       <HomeInfoRow
-        title="Humidity"
+        title={t('home.humidity')}
         iconName="humidity"
         isInfoAUnit={false}
         info={currentWeather.humidity}
@@ -117,15 +121,15 @@ export default function WeatherInfo({
         text=""
       />
       {airQuality && (
-        <>
+        <div className="mb-4 flex flex-col gap-8">
           <Line isDay={currentWeather.is_day} width={128} />
           <HomeInfoRow
-            title="Air Quality"
+            title={t('home.airquality')}
             isInfoAUnit={false}
             info={AirQualityData()!}
             text=""
           />
-        </>
+        </div>
       )}
     </div>
   );

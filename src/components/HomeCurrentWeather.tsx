@@ -1,29 +1,33 @@
-import { useWeatherStore } from '../store/weather';
+import { useWeatherStore } from '../store/weather'
 
-import WeatherInfo from './WeatherInfo';
-import { useSettingsStore } from '../store/settings';
+import WeatherInfo from './WeatherInfo'
+import { useSettingsStore } from '../store/settings'
 
 type HomeCurrentWeatherProps = {
-  bgColor: string;
-  textColor: string;
-  icon: string;
-};
+  bgColor: string
+  textColor: string
+  icon: string
+}
 
 export default function HomeCurrentWeather({
   weatherStyle,
 }: {
-  weatherStyle: HomeCurrentWeatherProps;
+  weatherStyle: HomeCurrentWeatherProps
 }) {
-  const weather = useWeatherStore((state) => state.weather);
+  const weather = useWeatherStore((state) => state.weather)
   const [darkMode, themeBackground, imperialUnits] = useSettingsStore(
     (state) => [state.darkMode, state.themeBackground, state.imperialUnits]
-  );
+  )
   return (
     <>
-      <div className="flex flex-col gap-4 items-center ">
+      <div className="flex flex-col items-center gap-4 ">
         <div className="flex items-center gap-2">
-          <img src={weatherStyle.icon} alt="" className="w-48" />
-          <div className="flex gap-2 flex-col">
+          <img
+            src={weatherStyle.icon}
+            alt={weather.current.condition.text}
+            className="w-48"
+          />
+          <div className="flex flex-col gap-2">
             <div className="flex items-center">
               <img src="/weather/thermometer.svg" alt="" className="w-12" />
               <div className="flex gap-2">
@@ -91,5 +95,5 @@ export default function HomeCurrentWeather({
         airQualityInfo={weather.current.air_quality}
       />
     </>
-  );
+  )
 }
