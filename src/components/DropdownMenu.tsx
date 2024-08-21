@@ -1,22 +1,32 @@
-import { Menu, Transition } from '@headlessui/react';
-import { MdOutlineSettings } from 'react-icons/md';
-import { useContext, Fragment } from 'react';
-import { SettingsContext } from '../context/Settings';
-import { SettingsContextType } from '../types/SettingsContextType';
-import MenuRow from './MenuRow';
+import { Menu, Transition } from '@headlessui/react'
+import { MdOutlineSettings } from 'react-icons/md'
+import { Fragment } from 'react'
+import MenuRow from './MenuRow'
+import { useSettingsStore } from '../store/settings'
+import LanguageSelector from './LanguageSelector'
+import { useTranslation } from 'react-i18next'
 
 export default function DropdownMenu() {
-  const {
+  const [
     darkMode,
     setDarkMode,
     themeBackground,
     setThemeBackground,
     imperialUnits,
     setImperialUnits,
-  } = useContext(SettingsContext) as SettingsContextType;
+  ] = useSettingsStore((state) => [
+    state.darkMode,
+    state.setDarkMode,
+    state.themeBackground,
+    state.setThemeBackground,
+    state.imperialUnits,
+    state.setImperialUnits,
+  ])
+  const [t] = useTranslation('global')
+
   return (
-    <Menu as="div" className="relative">
-      <Menu.Button className="relative bg-gray-100 dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 text-xl w-8 h-8 border-2 rounded dark:border-neutral-700 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black transition-colors">
+    <Menu as="div" className="relative z-10">
+      <Menu.Button className="relative w-8 h-8 text-xl transition-colors bg-gray-100 border-2 rounded dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 dark:border-neutral-700 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black">
         <MdOutlineSettings className="absolute top-1 left-1" />
       </Menu.Button>
       <Transition
@@ -28,33 +38,35 @@ export default function DropdownMenu() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="flex flex-col gap-6 bg-gray-100 dark:bg-neutral-800 border-2 dark:border-neutral-700 rounded-xl absolute top-10 -left-24 sm:-left-44 p-4">
+        <Menu.Items className="absolute flex flex-col gap-6 p-4 bg-gray-100 border-2 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl top-10 -left-24 sm:-left-44">
           <MenuRow
             state={darkMode}
             setState={setDarkMode}
             localStorageName="dark-mode"
-            title="Theme"
-            leftinfo="Light"
-            rightinfo="Dark"
+            title={t('navbar.settings.theme')}
+            leftinfo={t('navbar.settings.light')}
+            rightinfo={t('navbar.settings.dark')}
           />
           <MenuRow
             state={themeBackground}
             setState={setThemeBackground}
             localStorageName="theme-background"
-            title="Background"
-            leftinfo="Weather"
-            rightinfo="Theme"
+            title={t('navbar.settings.background')}
+            leftinfo={t('navbar.settings.weather')}
+            rightinfo={t('navbar.settings.theme')}
           />
           <MenuRow
             state={imperialUnits}
             setState={setImperialUnits}
             localStorageName="imperial-units"
-            title="Units"
-            leftinfo="Metric"
-            rightinfo="Imperial"
+            title={t('navbar.settings.units')}
+            leftinfo={t('navbar.settings.metric')}
+            rightinfo={t('navbar.settings.imperial')}
           />
+
+          <LanguageSelector />
         </Menu.Items>
       </Transition>
     </Menu>
-  );
+  )
 }

@@ -182,7 +182,7 @@ export const weatherCodesAndIcons = [
     },
   },
   {
-    codes: [1183],
+    codes: [1180, 1183],
     day: {
       bgColor: 'bg-gray-400',
       textColor: 'text-black',
