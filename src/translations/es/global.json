@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "placeholder": "¡Introduce tu ciudad!",
+    "search": "Buscar",
+    "settings": {
+      "theme": "Tema",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "background": "Fondo",
+      "weather": "Clima",
+      "units": "Unidades",
+      "metric": "Métrico",
+      "imperial": "Imperial"
+    }
+  },
+  "home-navbar": {
+    "current": "Actual",
+    "hourly": "Cada Hora",
+    "daily": "Diario"
+  },
+  "home": {
+    "wind": "Viento",
+    "windgusts": "Ráfagas",
+    "sunrise": "Amanecer",
+    "sunset": "Atardecer",
+    "humidity": "Humedad",
+    "airquality": "Calidad del aire"
+  },
+  "hourly": {
+    "title": "Siguientes 24 horas"
+  },
+  "daily": {
+    "title": "Siguientes 3 días"
+  }
+}

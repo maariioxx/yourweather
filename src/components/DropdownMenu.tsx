@@ -1,21 +1,31 @@
 import { Menu, Transition } from '@headlessui/react';
 import { MdOutlineSettings } from 'react-icons/md';
-import { useContext, Fragment } from 'react';
-import { SettingsContext } from '../context/Settings';
-import { SettingsContextType } from '../types/SettingsContextType';
+import { Fragment } from 'react';
 import MenuRow from './MenuRow';
+import { useSettingsStore } from '../store/settings';
+import LanguageSelector from './LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 export default function DropdownMenu() {
-  const {
+  const [
     darkMode,
     setDarkMode,
     themeBackground,
     setThemeBackground,
     imperialUnits,
     setImperialUnits,
-  } = useContext(SettingsContext) as SettingsContextType;
+  ] = useSettingsStore((state) => [
+    state.darkMode,
+    state.setDarkMode,
+    state.themeBackground,
+    state.setThemeBackground,
+    state.imperialUnits,
+    state.setImperialUnits,
+  ]);
+  const [t, i18n] = useTranslation('global');
+
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className="relative z-10">
       <Menu.Button className="relative bg-gray-100 dark:bg-neutral-800 hover:bg-yellow-400 hover:border-yellow-400 text-xl w-8 h-8 border-2 rounded dark:border-neutral-700 dark:hover:bg-yellow-400 dark:hover:border-yellow-400 dark:hover:text-black transition-colors">
         <MdOutlineSettings className="absolute top-1 left-1" />
       </Menu.Button>
@@ -33,26 +43,28 @@ export default function DropdownMenu() {
             state={darkMode}
             setState={setDarkMode}
             localStorageName="dark-mode"
-            title="Theme"
-            leftinfo="Light"
-            rightinfo="Dark"
+            title={t('navbar.settings.theme')}
+            leftinfo={t('navbar.settings.light')}
+            rightinfo={t('navbar.settings.dark')}
           />
           <MenuRow
             state={themeBackground}
             setState={setThemeBackground}
             localStorageName="theme-background"
-            title="Background"
-            leftinfo="Weather"
-            rightinfo="Theme"
+            title={t('navbar.settings.background')}
+            leftinfo={t('navbar.settings.weather')}
+            rightinfo={t('navbar.settings.theme')}
           />
           <MenuRow
             state={imperialUnits}
             setState={setImperialUnits}
             localStorageName="imperial-units"
-            title="Units"
-            leftinfo="Metric"
-            rightinfo="Imperial"
+            title={t('navbar.settings.units')}
+            leftinfo={t('navbar.settings.metric')}
+            rightinfo={t('navbar.settings.imperial')}
           />
+
+          <LanguageSelector />
         </Menu.Items>
       </Transition>
     </Menu>

@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "placeholder": "City input",
+    "search": "Search",
+    "settings": {
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "background": "Background",
+      "weather": "Weather",
+      "units": "Units",
+      "metric": "Metric",
+      "imperial": "Imperial"
+    }
+  },
+  "home-navbar": {
+    "current": "Current",
+    "hourly": "Hourly",
+    "daily": "Daily"
+  },
+  "home": {
+    "wind": "Wind",
+    "windgusts": "Wind Gusts",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "humidity": "Humidity",
+    "airquality": "Air Quality"
+  },
+  "hourly": {
+    "title": "Next 24 hours"
+  },
+  "daily": {
+    "title": "Next 3 days"
+  }
+}

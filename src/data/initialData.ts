@@ -3059,18 +3059,3 @@ export const initialData = {
     ],
   },
 };
-
-export const initialCity = [
-  {
-    city: 'London',
-    country: 'United Kingdom',
-    populationCounts: [
-      {
-        year: '2019',
-        value: '8982000',
-        sex: 'Both Sexes',
-        reliabilty: 'Final figure, complete',
-      },
-    ],
-  },
-];
