@@ -33,15 +33,13 @@ export default function App() {
     }
   }, [])
 
-  console.log(process.env.NODE_ENV)
-
   /*eslint-disable react-hooks/exhaustive-deps */
 
   async function fetchWeather() {
     const { data } = await axios.post(
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/weather-api'
-        : 'https://yourweather1.netlify.app/',
+        : 'https://yourweather1.netlify.app/weather-api',
       {
         city: currentCity,
       }

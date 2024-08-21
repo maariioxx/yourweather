@@ -1,9 +1,9 @@
-import { useWeatherStore } from '../store/weather';
-import { useState, useEffect } from 'react';
+import { useWeatherStore } from '../store/weather'
+import { useState, useEffect } from 'react'
 
 export default function DayTimeBar() {
-  const weather = useWeatherStore((state) => state.weather);
-  const [percentage, setPercentage] = useState(0);
+  const weather = useWeatherStore((state) => state.weather)
+  const [percentage, setPercentage] = useState(0)
   function calculateDayPercentage() {
     const rise = Number(
       `${
@@ -35,7 +35,7 @@ export default function DayTimeBar() {
               1000
             ).toFixed(0)
       }`
-    );
+    )
     const set = Number(
       `${
         weather.current.is_day
@@ -96,7 +96,7 @@ export default function DayTimeBar() {
               1000
             ).toFixed(0)
       }`
-    );
+    )
     const current = Number(
       `${
         weather.current.is_day
@@ -116,23 +116,15 @@ export default function DayTimeBar() {
           60) *
         1000
       ).toFixed(0)}`
-    );
-    console.log(weather);
-    console.log(current);
-    console.log(rise);
-    console.log(set);
-    const perc = Math.round(((current - rise) / (set - rise)) * 100);
-    return perc;
+    )
+    const perc = Math.round(((current - rise) / (set - rise)) * 100)
+    return perc
   }
 
   useEffect(() => {
-    const perc = calculateDayPercentage();
-    setPercentage(perc);
-  }, [weather]);
-
-  useEffect(() => {
-    console.log(percentage);
-  }, [percentage]);
+    const perc = calculateDayPercentage()
+    setPercentage(perc)
+  }, [weather])
 
   return (
     <div>
@@ -165,5 +157,5 @@ export default function DayTimeBar() {
         ></div>
       </div>
     </div>
-  );
+  )
 }
